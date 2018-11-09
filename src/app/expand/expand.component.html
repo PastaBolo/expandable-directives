@@ -1,0 +1,9 @@
+<div expandable #container="expandableContainer" [opened]="true" [disabled]="false">
+  <button (click)="container.toggle()">toggle</button>
+  <div expandableContent style="border: 1px solid black">
+    coucou
+  </div>
+</div>
+
+<button (click)="container.disable()">disable</button>
+<button (click)="container.enable()">enable</button>
