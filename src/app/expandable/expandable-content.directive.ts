@@ -1,7 +1,7 @@
-import { Directive, HostBinding, Input, Inject, ElementRef } from '@angular/core';
+import { Directive, HostBinding, Input, ElementRef } from '@angular/core';
 import { AnimationBuilder, AnimationMetadata, AnimationPlayer, style, animate } from '@angular/animations';
 
-import { ExpandableContainerDirective, EXPANDABLE_CONTAINER } from './expandable-container.directive';
+import { ExpandableContainerDirective } from './expandable-container.directive';
 
 @Directive({
   selector: '[expandableContent]'

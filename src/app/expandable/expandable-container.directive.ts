@@ -1,12 +1,9 @@
-import { Directive, OnChanges, OnInit, HostBinding, Input, Output, EventEmitter, InjectionToken, forwardRef, SimpleChanges } from '@angular/core';
+import { Directive, OnChanges, OnInit, HostBinding, Input, Output, EventEmitter, InjectionToken, SimpleChanges } from '@angular/core';
 import { ExpandableContentDirective } from './expandable-content.directive';
-
-export const EXPANDABLE_CONTAINER = new InjectionToken<ExpandableContainerDirective>('expandable container');
 
 @Directive({
   selector: '[expandable]',
-  exportAs: 'expandableContainer',
-  providers: [{ provide: EXPANDABLE_CONTAINER, useExisting: forwardRef(() => ExpandableContainerDirective) }]
+  exportAs: 'expandableContainer'
 })
 export class ExpandableContainerDirective implements OnChanges, OnInit {
   @HostBinding('class.expansion-animating') animationClass;
