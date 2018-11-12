@@ -1,0 +1,11 @@
+.expansion-animating {
+  background: yellowgreen;
+}
+
+.expansion-opened {
+  color: lightgreen;
+}
+
+.expansion-disabled {
+  background: lightcoral;
+}

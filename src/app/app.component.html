@@ -1,14 +1,51 @@
-<div expandable #container="expandableContainer" [opened]="true" [disabled]="false" (animationStart)="onStart()"
-  (animationDone)="onDone()">
-  <button (click)="container.toggle()">toggle</button>
+<h2>Utilisation</h2>
+
+<h3>Open / Close</h3>
+<div>- two-way data binding : n'utiliser que la value passée en input [(opened)] (pour remplacer toggle(), open() et close() qui ne seront pas à utiliser)</div>
+<div>- on peut utiliser container.opened pour avoir l'état</div>
+
+<h3>Disable / Enable</h3>
+<div>- two-way data bindings : n'utiliser que la valeur passée en input [(disabled)] (pour remplacer enable() et disable() qui ne seront pas à utiliser)</div>
+<div>- on peut utiliser container.disabled pour avoir l'état</div>
+
+<hr>
+
+<h2>Two-way data bindings</h2>
+
+<button (click)="opened = disabled ? opened : !opened">Toggle</button>
+<button *ngIf="!opened" (click)="opened = !disabled ? true : opened">Open</button>
+<button *ngIf="opened" (click)="opened = !disabled ? false : opened">Close</button>
+<button (click)="disabled = !disabled">{{ disabled ? 'Enable' : 'Disable' }}</button>
+
+<div expandable [(opened)]="opened" [(disabled)]="disabled" (animationStart)="onStart()" (animationDone)="onDone()">
   <div expandableContent style="border: 1px solid black">
     coucou
   </div>
 </div>
 
-<button (click)="container.disable()">disable</button>
-<button (click)="container.enable()">enable</button>
+<hr>
 
-<br>
+<h2>Sans Two-way bindings</h2>
 
-<app-expand></app-expand>
+<button (click)="container1.toggle()">Toggle</button>
+<button *ngIf="!container1.opened" (click)="container1.open()">Open</button>
+<button *ngIf="container1.opened" (click)="container1.close()">Close</button>
+<button *ngIf="!container1.disabled" (click)="container1.disable()">Disable</button>
+<button *ngIf="container1.disabled" (click)="container1.enable()">Enable</button>
+
+<div expandable #container1="expandableContainer" [opened]="true" [disabled]="false" (animationStart)="onStart()" (animationDone)="onDone()">
+  <div expandableContent style="border: 1px solid black">
+    coucou
+  </div>
+</div>
+
+<hr>
+
+<h2>Cas classique</h2>
+
+<div expandable #container2="expandableContainer" (click)="container2.toggle()" [opened]="true" [disabled]="false" (animationStart)="onStart()" (animationDone)="onDone()" style="border: 1px solid black">
+  <div>cliquez dans l'encadré</div>
+  <div expandableContent>
+    coucou
+  </div>
+</div>
